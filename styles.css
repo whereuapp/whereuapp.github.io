@@ -1,1 +1,176 @@
-html{height: 100%; width: 100%; padding: 0; margin: 0;}
+html{
+	height: 100%; 
+	width: 100%; 
+	padding: 0; 
+	margin: 0;
+	cursor: default;
+	background: #43C6AC; /* fallback for old browsers */
+	background: -webkit-linear-gradient(#F8FFAE, #43C6AC); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(#F8FFAE, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+	font-family: Roboto;
+}
+body{
+	text-align:center;
+}
+#tag-area{
+	padding:0;
+	margin: 0;
+}
+#tag-area h1{
+	padding:0 0 30px 0;
+	margin: 0;
+}
+#friend-area{ 
+    position: relative;
+    width: 315px;
+    text-align: center;
+    margin: 0 auto;
+}
+#person-name{
+
+}
+input {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #333;
+  background-color: transparent;
+}
+input:focus, button:focus {outline:none;}
+
+/* label */
+label{
+  color:grey; 
+  font-size:18px;
+  position:relative;
+  top: -30px;
+  left: -90px;
+  pointer-events:none;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label{
+  top:-60px;
+  left: -110px;
+  font-size:14px;
+  color:#333;
+}
+
+/* bottom bar */
+.bar{ 
+	display:block; 
+	width:315px; 
+}
+.bar:before, .bar:after{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:0; 
+  position:absolute;
+  top: 40px;
+  background:#2b90f5; 
+  transition:0.4s ease all; 
+  -moz-transition:0.4s ease all; 
+  -webkit-transition:0.4s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* highlight */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+#submit-area{
+	padding: 0 0 0 0;
+}
+/* Material style */
+button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  width: 315px;
+  padding: 15px 40px;
+  border-radius: 1px;
+  font-size: 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+  background: #2b90f5 url("map-marker.png") no-repeat 80% center;
+}
+
+/* Ripple magic */
+button{
+  position: relative;
+  overflow: hidden;
+}
+
+button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(30, 30);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(60, 60);
+  }
+}
